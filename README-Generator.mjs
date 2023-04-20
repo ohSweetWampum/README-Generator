@@ -129,7 +129,16 @@ function generateReadme(answers) {
   ${technologyList}
   </ul>
   
- 
+  ## Demo
+  
+  ![Demo GIF](${answers.gifUrl})
+  
+  ## Code Snippet
+  
+  \`\`\`
+  ${answers.codeSnippet}
+  \`\`\`
+
   ### Description
   
   ${answers.codeDescription}
@@ -150,5 +159,12 @@ function generateReadme(answers) {
   ${creditsList}
   </ul>
   
+  ## License
+![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, '%20')}-yellow)
+This project is protected by the ${answers.license} License.
+`;
  
 }
+
+ 
+
