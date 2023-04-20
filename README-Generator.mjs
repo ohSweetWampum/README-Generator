@@ -165,6 +165,9 @@ This project is protected by the ${answers.license} License.
 `;
  
 }
-
- 
+//prompt the user , generate a README.md file, save the file, if any errors occur they will be logged to the console.
+inquirer.prompt(questions).then((answers) => {
+	const readmeContent = generateReadme(answers);
+	fs.writeFile('README.md', readmeContent, (err) => err ? console.log(err) : console.log('Successfully created README.md!'));
+});
 
