@@ -74,5 +74,22 @@ const questions =[ {
 
 
 
+function generateReadme(answers) {
+// creating code to make the list items a link
+//technology section
+	const technologyList = answers.technology.split(',')
+  .map(pair => {
+    const [technology, url] = pair.trim().split(' ');
+    return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
+  })
+  .join('\n');
+//credits section
+const creditsList = answers.Credits.split(',')
+  .map(pair => {
+    const [Credits, url] = pair.trim().split(' ');
+    return `<li><a href="${url}" target="_blank">${Credits}</a></li>`;
+  })
+  .join('\n');
 
- 
+
+
