@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import fs from 'fs/promises';
 // making the prompts
-const questions =[ {
+const questions = [{
 		type: 'input',
 		name: 'title',
 		message: 'What is the title of your application?',
@@ -71,25 +71,84 @@ const questions =[ {
 	},
 ];
 
-
-
-
 function generateReadme(answers) {
-// creating code to make the list items a link
-//technology section
-	const technologyList = answers.technology.split(',')
-  .map(pair => {
-    const [technology, url] = pair.trim().split(' ');
-    return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
-  })
-  .join('\n');
-//credits section
-const creditsList = answers.Credits.split(',')
-  .map(pair => {
-    const [Credits, url] = pair.trim().split(' ');
-    return `<li><a href="${url}" target="_blank">${Credits}</a></li>`;
-  })
-  .join('\n');
+	// creating code to make the list items a link
+	//technology section
+	const technologyList = answers.technology.split(',').map(pair => {
+		const [technology, url] = pair.trim().split(' ');
+		return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
+	}).join('\n');
+	//credits section
+	const creditsList = answers.Credits.split(',').map(pair => {
+		const [Credits, url] = pair.trim().split(' ');
+		return `<li><a href="${url}" target="_blank">${Credits}</a></li>`;
+	}).join('\n');
+	return `# ${answers.title}
+	
+  
+  ## Title
 
-
-
+  ${answers.title}
+  
+  ## About
+  
+  ${answers.breif}
+  
+  ## Description
+  
+  ${answers.description}
+  
+  ## Table of Contents
+  
+  - [Website](#website)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Technology](#technology)
+  - [Demo](#demo)
+  - [Code Snippet](#code-snippet)
+  - [Learning](#learning)
+  - [Contact](#contact)
+  - [Credits](#credits)
+  - [License](#license)
+  
+  ## Website
+  
+  ${answers.website}
+  
+  ## Installation
+  
+  ${answers.installation}
+  
+  ## Usage
+  
+  ${answers.usage}
+  
+  ## Technology
+  
+   <ul>
+  ${technologyList}
+  </ul>
+  
+ 
+  ### Description
+  
+  ${answers.codeDescription}
+  
+  ## Learning
+  
+  ${answers.learning}
+  
+  ## Contact
+  
+  - [GitHub Profile](${answers.github})
+  - [Portfolio](${answers.portfolio})
+  - [LinkedIn](${answers.linkedin})
+  
+  ## Credits
+  
+  <ul>
+  ${creditsList}
+  </ul>
+  
+ 
+}
