@@ -76,16 +76,6 @@ import inquirer from "inquirer";
 		name: 'contributing',
 		message: 'Enter the contributing guidelines for your application:',
 	},
-	{
-		type: "input",
-		name: "codeSnippet",
-		message: "Enter a code snippet from your application:",
-	  },
-	  {
-		type: "input",
-		name: "codeComment",
-		message: "Provide a comment or explanation for the code snippet:",
-	  },
 
 
 	{
@@ -177,15 +167,6 @@ import inquirer from "inquirer";
   
   ![Demo GIF](${answers.gifUrl})
 
-  ## Code Snippet
-
-  \`\`\`
-  ${answers.codeSnippet}
-  \`\`\`
-
-  ## Code Comment
-
-  ${answers.codeComment}
 
 
   
