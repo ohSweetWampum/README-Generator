@@ -113,9 +113,6 @@ import inquirer from "inquirer";
 	  .split(",")
 	  .map((pair) => {
 		const [technology, url] = pair.trim().split(" ");
-		if (!technology || !url) {
-		  throw new Error("Invalid input format for technologies.");
-		}
 		return `<a href="${url}" target="_blank">${technology}</a>`;
 	  })
 	  .join(", ");
@@ -125,9 +122,6 @@ import inquirer from "inquirer";
 	  .split(",")
 	  .map((pair) => {
 		const [credits, url] = pair.trim().split(" ");
-		if (!credits || !url) {
-		  throw new Error("Invalid input format for credits.");
-		}
 		return `<a href="${url}" target="_blank">${credits}</a>`;
 	  })
 	  .join(", ");

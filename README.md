@@ -1,92 +1,83 @@
 # node
   
-	## License
+  ## License
   
-	![License](https://img.shields.io/badge/license-MIT-yellow)
-	This project is covered by the MIT License.
+  ![License](https://img.shields.io/badge/license-MIT-yellow)
+  This project is covered by the MIT License.
   
-	## About
+  ## About
   
-	node
+  node
   
-	## Description
+  ## Description
   
-	node
+  rfrfr
   
-	## Table of Contents
+  ## Table of Contents
   
-	- [Website](#website)
-	- [Installation](#installation)
-	- [Usage](#usage)
-	- [Technology](#technology)
-	- [Demo](#demo)
-	- [Code Snippet](#code-snippet)
-	- [Learning](#learning)
-	- [Contact](#contact)
-	- [Credits](#credits)
-	- [License](#license)
+  - [Website](#website)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Technology](#technology)
+  - [Demo](#demo)
+  - [Code Snippet](#code-snippet)
+  - [Learning](#learning)
+  - [Contact](#contact)
+  - [Credits](#credits)
+  - [License](#license)
   
-	## Website
+  ## Website
   
-	https://github.com/argibson02/readme-generator/blob/main/index.js
+  https://chat.openai.com/?model=gpt-4
   
-	## Installation
+  ## Installation
   
-	edeed
   
-	## Usage
   
-	edeed
+  ## Usage
   
-	## Technology
+  rrfr
   
-	<ul>
-	<li><a href="undefined" target="_blank">https://github.com/argibson02/readme-generator/blob/main/index.js</a></li>
-<li><a href="undefined" target="_blank">https://github.com/argibson02/readme-generator/blob/main/index.js</a></li>
-<li><a href="undefined" target="_blank">https://github.com/argibson02/readme-generator/blob/main/index.js</a></li>
-	</ul>
+  ## Technology
   
-	## Demo
+  <a href="undefined" target="_blank">https://chat.openai.com/?model=gpt-4</a>, <a href="undefined" target="_blank">https://chat.openai.com/?model=gpt-4</a>, <a href="undefined" target="_blank">https://chat.openai.com/?model=gpt-4</a>
   
-	![Demo GIF](https://github.com/argibson02/readme-generator/blob/main/index.js)
+  ## Demo
   
-	## Code Snippet
+  ![Demo GIF](https://chat.openai.com/?model=gpt-4)
+
+  ## Code Snippet & Comment
+
+  ```
+  .split(",")
+  ```
+
+  		const [technology, url] = pair.trim().split(" ");
+
   
-	```
-	undefined
-	```
+  ## Learning
   
-	### Description
+  rf4f
   
-	undefined
+  ## Contact
   
-	## Learning
+  - [GitHub Profile](https://github.com/ohSweetWampum)
+  - [Portfolio](https://chat.openai.com/?model=gpt-4)
+  - [LinkedIn](https://chat.openai.com/?model=gpt-4)
   
-	ref
+  ## Credits
   
-	## Contact
+  <a href="undefined" target="_blank">https://chat.openai.com/?model=gpt-4</a>
   
-	- [GitHub Profile](https://github.com/ohSweetWampum)
-	- [Portfolio](https://github.com/argibson02/readme-generator/blob/main/index.js)
-	- [LinkedIn](https://github.com/argibson02/readme-generator/blob/main/index.js)
+  ## Contributing
   
-	## Credits
+  efe
   
-	<ul>
-	<li><a href="undefined" target="_blank">https://github.com/argibson02/readme-generator/blob/main/index.js</a></li>
-<li><a href="undefined" target="_blank">https://github.com/argibson02/readme-generator/blob/main/index.js</a></li>
-<li><a href="undefined" target="_blank">https://github.com/argibson02/readme-generator/blob/main/index.js</a></li>
-	</ul>
+  ## Tests
   
-	## Contributing
+    efe
   
-	efrf
+  ## Questions
   
-	## Tests
+  If you have any questions about this README generator, please contact me at [mtgibson888@gmail.com](mailto:mtgibson888@gmail.com) or check out my [GitHub Profile](https://github.com/ohSweetWampum).
   
-	4r4
-  
-	## Questions
-  
-	If you have any questions about this README generator, please contact me at [mtgibson888@gmail.com](mailto:mtgibson888@gmail.com) or check out my [GitHub Profile](https://github.com/ohSweetWampum).
-  }
