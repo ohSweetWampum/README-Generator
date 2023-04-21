@@ -35,7 +35,7 @@ import inquirer from "inquirer";
 	}, {
 		type: 'input',
 		name: 'technology',
-		message: 'Enter links to the offical sites of the technologies you used',
+		message: 'Enter the names and links of the technologies you used, separated by commas (e.g., Name1 URL1, Name2 URL2)',
 	}, {
 		type: 'input',
 		name: 'gifUrl',
@@ -68,7 +68,7 @@ import inquirer from "inquirer";
 	}, {
 		type: 'input',
 		name: 'credits',
-		message: 'Credit resources that helped you, add their links',
+		message: 'Credit resources that helped you, add their names and links separated by commas (e.g., Name1 URL1, Name2 URL2)',
 	}, 
 	
 	{
@@ -76,6 +76,18 @@ import inquirer from "inquirer";
 		name: 'contributing',
 		message: 'Enter the contributing guidelines for your application:',
 	},
+	{
+		type: "input",
+		name: "codeSnippet",
+		message: "Enter a code snippet from your application:",
+	  },
+	  {
+		type: "input",
+		name: "codeComment",
+		message: "Provide a comment or explanation for the code snippet:",
+	  },
+
+
 	{
 		type: 'input',
 		name: 'testInstructions',
@@ -95,98 +107,116 @@ import inquirer from "inquirer";
       console.log(err ? err : "Congratulations, you have successfully created your README.md file, check your current directory to find the file!")
     );
   });
-
   function generateReadme(answers) {
-	// creating code to make the list items a link
 	// technology section
-	const technologyList = answers.technology.split(",").map((pair) => {
-	  const [technology, url] = pair.trim().split(" ");
-	  return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
-	}).join("\n");
+	const technologyList = answers.technology
+	  .split(",")
+	  .map((pair) => {
+		const [technology, url] = pair.trim().split(" ");
+		if (!technology || !url) {
+		  throw new Error("Invalid input format for technologies.");
+		}
+		return `<a href="${url}" target="_blank">${technology}</a>`;
+	  })
+	  .join(", ");
+  
 	// credits section
-	const creditsList = answers.credits.split(",").map((pair) => {
-	  const [credits, url] = pair.trim().split(" ");
-	  return `<li><a href="${url}" target="_blank">${credits}</a></li>`;
-	}).join("\n");
+	const creditsList = answers.credits
+	  .split(",")
+	  .map((pair) => {
+		const [credits, url] = pair.trim().split(" ");
+		if (!credits || !url) {
+		  throw new Error("Invalid input format for credits.");
+		}
+		return `<a href="${url}" target="_blank">${credits}</a>`;
+	  })
+	  .join(", ");
   
 	return `# ${answers.title}
   
-	## License
+  ## License
   
-	![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, '%20')}-yellow)
-	This project is covered by the ${answers.license} License.
+  ![License](https://img.shields.io/badge/license-${answers.license.replace(
+	  / /g,
+	  "%20"
+	)}-yellow)
+  This project is covered by the ${answers.license} License.
   
-	## About
+  ## About
   
-	${answers.brief}
+  ${answers.brief}
   
-	## Description
+  ## Description
   
-	${answers.description}
+  ${answers.description}
   
-	## Table of Contents
+  ## Table of Contents
   
-	- [Website](#website)
-	- [Installation](#installation)
-	- [Usage](#usage)
-	- [Technology](#technology)
-	- [Demo](#demo)
-	- [Code Snippet](#code-snippet)
-	- [Learning](#learning)
-	- [Contact](#contact)
-	- [Credits](#credits)
-	- [License](#license)
+  - [Website](#website)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Technology](#technology)
+  - [Demo](#demo)
+  - [Code Snippet](#code-snippet)
+  - [Learning](#learning)
+  - [Contact](#contact)
+  - [Credits](#credits)
+  - [License](#license)
   
-	## Website
+  ## Website
   
-	${answers.website}
+  ${answers.website}
   
-	## Installation
+  ## Installation
   
-	${answers.installation}
+  ${answers.installation}
   
-	## Usage
+  ## Usage
   
-	${answers.usage}
+  ${answers.usage}
   
-	## Technology
+  ## Technology
   
-	<ul>
-	${technologyList}
-	</ul>
+  ${technologyList}
   
-	## Demo
+  ## Demo
   
-	![Demo GIF](${answers.gifUrl})
+  ![Demo GIF](${answers.gifUrl})
+
+  ## Code Snippet & Comment
+
+  \`\`\`
+  ${answers.codeSnippet}
+  \`\`\`
+
+  ${answers.codeComment}
+
   
+  ## Learning
   
-	## Learning
+  ${answers.learning}
   
-	${answers.learning}
+  ## Contact
   
-	## Contact
+  - [GitHub Profile](https://github.com/${answers.github})
+  - [Portfolio](${answers.portfolio})
+  - [LinkedIn](${answers.linkedin})
   
-	- [GitHub Profile](https://github.com/${answers.github})
-	- [Portfolio](${answers.portfolio})
-	- [LinkedIn](${answers.linkedin})
+  ## Credits
   
-	## Credits
+  ${creditsList}
   
-	<ul>
-	${creditsList}
-	</ul>
+  ## Contributing
   
-	## Contributing
+  ${answers.contributing}
   
-	${answers.contributing}
+  ## Tests
   
-	## Tests
+  ${answers.testInstructions}
   
-	${answers.testInstructions}
+  ## Questions
   
-	## Questions
-  
-	If you have any questions about this README generator, please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
-  }`;
-  } 
+  If you have any questions about this README generator, please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
+  `;
+  }
   
