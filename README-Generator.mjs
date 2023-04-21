@@ -1,13 +1,19 @@
-import inquirer from 'inquirer';
-import fs from 'fs/promises';
-// making the prompts
-const questions = [{
+// Packages needed for this application
+const fs = require("fs");
+
+const inquirer = require("inquirer");
+
+
+
+// Using inquirer to prompt user
+    inquirer
+    .prompt([{
 		type: 'input',
 		name: 'title',
 		message: 'What is the title of your application?',
 	}, {
 		type: 'input',
-		name: 'breif',
+		name: 'brief',
 		message: 'Enter a 1 sentence description of your application',
 	}, {
 		type: 'input',
@@ -50,8 +56,17 @@ const questions = [{
 	}, {
 		type: 'input',
 		name: 'github',
-		message: 'Enter your GitHub profile link:',
-	}, {
+		message: 'Enter your GitHub username',
+	}, 
+
+	{
+		type: 'input',
+		name: 'email',
+		message: 'Enter your email address',
+	},
+	
+
+	{
 		type: 'input',
 		name: 'portfolio',
 		message: 'Enter your portfolio link',
@@ -63,36 +78,62 @@ const questions = [{
 		type: 'input',
 		name: 'credits',
 		message: 'Credit resources that helped you, add their links',
-	}, {
+	}, 
+	
+	{
+		type: 'input',
+		name: 'contributing',
+		message: 'Enter the contributing guidelines for your application:',
+	},
+	{
+		type: 'input',
+		name: 'testInstructions',
+		message: 'Enter test instructions for your application:',
+	},
+	
+	
+	{
 		type: 'list',
 		name: 'license',
 		message: 'Choose a license for your application:',
 		choices: ['MIT', 'Apache 2.0', 'GPLv3', 'BSD 3-Clause', 'None'],
-	},
-];
+	}
+])
+.then((answers) => {
+  fs.writeFile("README.md", generateReadme(answers), (err) =>
+	console.log(err? err: "Congratulations, you have successfully created your README.md file, check your current directory to find the file!")
+  );
+});
 
 function generateReadme(answers) {
-	// creating code to make the list items a link
-	//technology section
-	const technologyList = answers.technology.split(',').map(pair => {
-		const [technology, url] = pair.trim().split(' ');
-		return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
-	}).join('\n');
-	//credits section
-	const creditsList = answers.Credits.split(',').map(pair => {
-		const [Credits, url] = pair.trim().split(' ');
-		return `<li><a href="${url}" target="_blank">${Credits}</a></li>`;
-	}).join('\n');
-	return `# ${answers.title}
+// creating code to make the list items a link
+// technology section
+const technologyList = answers.technology.split(",").map((pair) => {
+  const [technology, url] = pair.trim().split(" ");
+  return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
+}).join("\n");
+// credits section
+const creditsList = answers.credits.split(",").map((pair) => {
+  const [credits, url] = pair.trim().split(" ");
+  return `<li><a href="${url}" target="_blank">${credits}</a></li>`;
+}).join("\n");
+
+return `# ${answers.title}
+
 	
   
   ## Title
 
   ${answers.title}
   
+  ## License
+
+  ![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, '%20')}-yellow)
+  This project is covered by the ${answers.license} License.
+  
   ## About
   
-  ${answers.breif}
+  ${answers.brief}
   
   ## Description
   
@@ -149,7 +190,7 @@ function generateReadme(answers) {
   
   ## Contact
   
-  - [GitHub Profile](${answers.github})
+  - [GitHub Profile](https://github.com/${answers.github})
   - [Portfolio](${answers.portfolio})
   - [LinkedIn](${answers.linkedin})
   
@@ -159,15 +200,21 @@ function generateReadme(answers) {
   ${creditsList}
   </ul>
   
-  ## License
-![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, '%20')}-yellow)
-This project is protected by the ${answers.license} License.
+  ## Contributing
+
+  ${answers.contributing}
+
+  ## Tests
+
+  ${answers.testInstructions}
+
+
+
+  ## Questions
+
+    If you have any questions about this README generator , please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
+
+
 `;
  
-}
-//prompt the user , generate a README.md file, save the file, if any errors occur they will be logged to the console.
-inquirer.prompt(questions).then((answers) => {
-	const readmeContent = generateReadme(answers);
-	fs.writeFile('README.md', readmeContent, (err) => err ? console.log(err) : console.log('Successfully created README.md!'));
-});
 
