@@ -159,15 +159,6 @@ import inquirer from "inquirer";
   
 	![Demo GIF](${answers.gifUrl})
   
-	## Code Snippet
-  
-	\`\`\`
-	${answers.codeSnippet}
-	\`\`\`
-  
-	### Description
-  
-	${answers.codeDescription}
   
 	## Learning
   
