@@ -177,13 +177,16 @@ import inquirer from "inquirer";
   
   ![Demo GIF](${answers.gifUrl})
 
-  ## Code Snippet & Comment
+  ## Code Snippet
 
   \`\`\`
   ${answers.codeSnippet}
   \`\`\`
 
+  ## Code Comment
+
   ${answers.codeComment}
+
 
   
   ## Learning
