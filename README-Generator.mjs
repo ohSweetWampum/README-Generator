@@ -116,85 +116,54 @@ function generateReadme(answers) {
 			return `<a href="${url}" target="_blank">${credits}</a>`;
 		})
 		.join(", ");
+		const section = (title, content) => {
+			return content ? `## ${title}\n\n${content}\n\n` : "";
+		  };
 
 	return `# ${answers.title}
   
-  ## License
-  
-  ![License](https://img.shields.io/badge/license-${answers.license.replace(
-	  / /g,
-	  "%20"
-	)}-yellow)
-  This project is covered by the ${answers.license} License.
-  
-  ## About
-  
-  ${answers.brief}
-  
-  ## Description
-  
-  ${answers.description}
-  
-  ## Table of Contents
-  
-  - [Website](#website)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Technology](#technology)
-  - [Demo](#demo)
-  - [Code Snippet](#code-snippet)
-  - [Learning](#learning)
-  - [Contact](#contact)
-  - [Credits](#credits)
-  - [License](#license)
-  
-  ## Website
-  
-  ${answers.website}
-  
-  ## Installation
-  
-  ${answers.installation}
-  
-  ## Usage
-  
-  ${answers.usage}
-  
-  ## Technology
-  
-  ${technologyList}
-  
-  ## Demo
-  
-  ![Demo GIF](${answers.gifUrl})
+   
+${section("License", `![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, "%20")}-yellow)\nThis project is covered by the ${answers.license} License.`)}
 
+${section("About", answers.brief)}
 
+${section("Description", answers.description)}
 
-  
-  ## Learning
-  
-  ${answers.learning}
-  
-  ## Contact
-  
-  - [GitHub Profile](https://github.com/${answers.github})
-  - [Portfolio](${answers.portfolio})
-  - [LinkedIn](${answers.linkedin})
-  
-  ## Credits
-  
-  ${creditsList}
-  
-  ## Contributing
-  
-  ${answers.contributing}
-  
-  ## Tests
-  
-  ${answers.testInstructions}
-  
-  ## Questions
-  
-  If you have any questions about this README generator, please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
-  `;
+## Table of Contents
+
+- [Website](#website)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technology](#technology)
+- [Demo](#demo)
+- [Code Snippet](#code-snippet)
+- [Learning](#learning)
+- [Contact](#contact)
+- [Credits](#credits)
+- [License](#license)
+
+${section("Website", answers.website)}
+
+${section("Installation", answers.installation)}
+
+${section("Usage", answers.usage)}
+
+${section("Technology", technologyList)}
+
+${section("Demo", `![Demo GIF](${answers.gifUrl})`)}
+
+${section("Learning", answers.learning)}
+
+${section("Contact", `- [GitHub Profile](https://github.com/${answers.github})\n- [Portfolio](${answers.portfolio})\n- [LinkedIn](${answers.linkedin})`)}
+
+${section("Credits", creditsList)}
+
+${section("Contributing", answers.contributing)}
+
+${section("Tests", answers.testInstructions)}
+
+## Questions
+
+If you have any questions about this README generator, please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
+`;
 }
