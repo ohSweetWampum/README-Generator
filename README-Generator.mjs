@@ -1,7 +1,6 @@
-// Packages needed for this application
-const fs = require("fs");
-
-const inquirer = require("inquirer");
+// Packages needed for this application, using import statements instead of require
+import fs from "fs";
+import inquirer from "inquirer";
 
 
 
@@ -41,15 +40,7 @@ const inquirer = require("inquirer");
 		type: 'input',
 		name: 'gifUrl',
 		message: 'Enter the URL of your demo GIF',
-	}, {
-		type: 'input',
-		name: 'codeSnippet',
-		message: 'Enter your code snippet',
-	}, {
-		type: 'input',
-		name: 'codeDescription',
-		message: 'Provide description of the code snippet',
-	}, {
+	},  {
 		type: 'input',
 		name: 'learning',
 		message: 'Provide any things you learned making this application',
@@ -100,121 +91,111 @@ const inquirer = require("inquirer");
 	}
 ])
 .then((answers) => {
-  fs.writeFile("README.md", generateReadme(answers), (err) =>
-	console.log(err? err: "Congratulations, you have successfully created your README.md file, check your current directory to find the file!")
-  );
-});
+    fs.writeFile("README.md", generateReadme(answers), (err) =>
+      console.log(err ? err : "Congratulations, you have successfully created your README.md file, check your current directory to find the file!")
+    );
+  });
 
-function generateReadme(answers) {
-// creating code to make the list items a link
-// technology section
-const technologyList = answers.technology.split(",").map((pair) => {
-  const [technology, url] = pair.trim().split(" ");
-  return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
-}).join("\n");
-// credits section
-const creditsList = answers.credits.split(",").map((pair) => {
-  const [credits, url] = pair.trim().split(" ");
-  return `<li><a href="${url}" target="_blank">${credits}</a></li>`;
-}).join("\n");
-
-return `# ${answers.title}
-
-	
+  function generateReadme(answers) {
+	// creating code to make the list items a link
+	// technology section
+	const technologyList = answers.technology.split(",").map((pair) => {
+	  const [technology, url] = pair.trim().split(" ");
+	  return `<li><a href="${url}" target="_blank">${technology}</a></li>`;
+	}).join("\n");
+	// credits section
+	const creditsList = answers.credits.split(",").map((pair) => {
+	  const [credits, url] = pair.trim().split(" ");
+	  return `<li><a href="${url}" target="_blank">${credits}</a></li>`;
+	}).join("\n");
   
-  ## Title
-
-  ${answers.title}
+	return `# ${answers.title}
   
-  ## License
-
-  ![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, '%20')}-yellow)
-  This project is covered by the ${answers.license} License.
+	## License
   
-  ## About
+	![License](https://img.shields.io/badge/license-${answers.license.replace(/ /g, '%20')}-yellow)
+	This project is covered by the ${answers.license} License.
   
-  ${answers.brief}
+	## About
   
-  ## Description
+	${answers.brief}
   
-  ${answers.description}
+	## Description
   
-  ## Table of Contents
+	${answers.description}
   
-  - [Website](#website)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Technology](#technology)
-  - [Demo](#demo)
-  - [Code Snippet](#code-snippet)
-  - [Learning](#learning)
-  - [Contact](#contact)
-  - [Credits](#credits)
-  - [License](#license)
+	## Table of Contents
   
-  ## Website
+	- [Website](#website)
+	- [Installation](#installation)
+	- [Usage](#usage)
+	- [Technology](#technology)
+	- [Demo](#demo)
+	- [Code Snippet](#code-snippet)
+	- [Learning](#learning)
+	- [Contact](#contact)
+	- [Credits](#credits)
+	- [License](#license)
   
-  ${answers.website}
+	## Website
   
-  ## Installation
+	${answers.website}
   
-  ${answers.installation}
+	## Installation
   
-  ## Usage
+	${answers.installation}
   
-  ${answers.usage}
+	## Usage
   
-  ## Technology
+	${answers.usage}
   
-   <ul>
-  ${technologyList}
-  </ul>
+	## Technology
   
-  ## Demo
+	<ul>
+	${technologyList}
+	</ul>
   
-  ![Demo GIF](${answers.gifUrl})
+	## Demo
   
-  ## Code Snippet
+	![Demo GIF](${answers.gifUrl})
   
-  \`\`\`
-  ${answers.codeSnippet}
-  \`\`\`
-
-  ### Description
+	## Code Snippet
   
-  ${answers.codeDescription}
+	\`\`\`
+	${answers.codeSnippet}
+	\`\`\`
   
-  ## Learning
+	### Description
   
-  ${answers.learning}
+	${answers.codeDescription}
   
-  ## Contact
+	## Learning
   
-  - [GitHub Profile](https://github.com/${answers.github})
-  - [Portfolio](${answers.portfolio})
-  - [LinkedIn](${answers.linkedin})
+	${answers.learning}
   
-  ## Credits
+	## Contact
   
-  <ul>
-  ${creditsList}
-  </ul>
+	- [GitHub Profile](https://github.com/${answers.github})
+	- [Portfolio](${answers.portfolio})
+	- [LinkedIn](${answers.linkedin})
   
-  ## Contributing
-
-  ${answers.contributing}
-
-  ## Tests
-
-  ${answers.testInstructions}
-
-
-
-  ## Questions
-
-    If you have any questions about this README generator , please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
-
-
-`;
- 
-
+	## Credits
+  
+	<ul>
+	${creditsList}
+	</ul>
+  
+	## Contributing
+  
+	${answers.contributing}
+  
+	## Tests
+  
+	${answers.testInstructions}
+  
+	## Questions
+  
+	If you have any questions about this README generator, please contact me at [${answers.email}](mailto:${answers.email}) or check out my [GitHub Profile](https://github.com/${answers.github}).
+  }`;
+  } 
+  
